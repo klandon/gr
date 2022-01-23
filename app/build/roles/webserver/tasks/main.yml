@@ -1,0 +1,22 @@
+---
+# Install web server
+- name: Update yum based distro packages
+  yum:
+    name: nginx
+    state: latest
+    update_cache: yes
+
+- name: Copy new config
+  ansible.builtin.copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0744'
+    force: yes
+
+- name: start nginx on boot
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes

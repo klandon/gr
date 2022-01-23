@@ -1,0 +1,7 @@
+name: LNLP Amazon Linux AMI
+title: LNLP Amazon Linux AMI Conformance Tests
+maintainer: CE
+version: 0.0.0
+supports:
+  - os-family: linux
+inspec_version: '>= 2.3.5'

@@ -1,0 +1,12 @@
+---
+- name: gr
+  hosts: all
+  become: true
+  roles:
+    - { role: roles/base }
+    - { role: roles/webserver }
+    - { role: roles/app }
+
+
+
+

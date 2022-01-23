@@ -1,0 +1,12 @@
+---
+# modify index.html
+
+- name: Copy new index
+  ansible.builtin.copy:
+    src: files/index.html
+    dest: /app/index.html
+    owner: root
+    group: root
+    mode: '0777'
+    force: yes
+

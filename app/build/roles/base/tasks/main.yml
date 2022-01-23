@@ -1,0 +1,33 @@
+---
+# tasks file for base
+#upgrade all existing packages
+- name: Update yum based distro packages
+  yum:
+    name: "*"
+    state: latest
+    update_cache: true
+
+#mount app volume
+- name: creating mount point (directory)
+  file:
+    state: directory
+    path: /app
+
+- name: Create a new ext4 primary partition
+  community.general.parted:
+    device: /dev/xvdb
+    number: 1
+    state: present
+    fs_type: ext4
+
+- name: formatting the volume
+  filesystem:
+    dev: /dev/xvdb1
+    fstype: ext4
+
+- name: mounting the filesystem
+  mount:
+    name: /app
+    src: /dev/xvdb1
+    fstype: ext4
+    state: mounted
